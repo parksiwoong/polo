@@ -1,0 +1,84 @@
+html {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 400;
+}
+
+input, textarea {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 400;
+}
+
+input.property-full-width,
+textarea.property-full-width {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body > form.body-item.form {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 3.5rem;
+    position: relative;
+}
+
+body > form.body-item.form > table.form-item.table {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+body > form.body-item.form > table.form-item.table > caption {
+    color: #a0a0a0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+body > form.body-item.form > table.form-item.table input,
+body > form.body-item.form > table.form-item.table textarea {
+    border: 0.0625rem solid #c4c4c4;
+    border-radius: 0.125rem;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+}
+
+body > form.body-item.form > table.form-item.table textarea {
+    resize: none;
+}
+
+body > form.body-item.form > table.form-item.table div.table-item.button-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+body > form.body-item.form > table.form-item.table div.table-item.button-container > input.button {
+    background-color: #f0f0f0;
+    border: 0.0625rem solid #c4c4c4;
+    cursor: pointer;
+}
+
+body > form.body-item.form > table.form-item.table div.table-item.button-container > input.button:hover {
+    background-color: #e0e0e0;
+}
+
+body > form.body-item.form > table.form-item.table div.table-item.button-container > input.button:active {
+    background-color: #d0d0d0;
+}
+
+body > form.body-item.form > table.form-item.table div.table-item.button-container > input.button:not(:last-child) {
+    margin-right:0.5rem;
+}
+.ck-editor__editable {
+    height: 25rem;
+    /*    얘가 가져온 api게시판 높이 조절해주는거 */
+}

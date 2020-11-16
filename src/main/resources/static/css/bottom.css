@@ -1,0 +1,12 @@
+footer{background: #4c4c4c; color: #797676; width: 100%;  position: relative;  }
+/*bottom: -45%; transform: translateY(-100%); */
+footer> div { width:100%; padding: 45px 0; margin: 0 auto;}
+footer > div > .right {float: right; position: absolute; right: 0; top: 0; width: 39px; height: 49px; margin: -20px 100px 0 0;}
+footer > div .left{text-align: center}
+footer img{width:30px; height: 30px;}
+footer p{color: rgb(255, 255, 255);}
+
+
+/*.gumseg{height: auto; min-height: 100%; padding-bottom: 60px;}*/
+
+

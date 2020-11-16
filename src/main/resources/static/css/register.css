@@ -1,0 +1,88 @@
+/*.register {*/
+/*    width: 410px;*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 65%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
+
+/*.register h2 {*/
+/*    board-bottom: 2px solid #000;*/
+/*    text-align: center;*/
+/*    line-height: 1;*/
+/*    pont-size: 32px;*/
+/*    color: #111;*/
+/*    padding: 0 0 12px;*/
+/*}*/
+
+/*.register .register_1 {*/
+/*    padding: 11px 0 12px;*/
+/*}*/
+
+/*.register .register_1 input {*/
+/*    width: 100%;*/
+/*    height: 46px;*/
+/*    box-sizing: border-box;*/
+/*    text-indent: 16px*/
+/*}*/
+
+/*.register .register_1 input::-webkit-calendar-picker-indicator {*/
+/*    font-size: 16px;*/
+/*    color: #9fa19f;*/
+/*}*/
+
+/*.register .register_1 input[type="checkbox"] {*/
+/*    position: absolute;*/
+/*    left: -3000%;*/
+/*}*/
+
+/*.register .register_1 input[type="checkbox"] + label:before {*/
+/*    content: "";*/
+/*    width: 18px;*/
+/*    display: inline-block;*/
+/*<!-- 인라인블럭으로 밑으로 떨어지게 --> width: 18px;*/
+/*    height: 18px;*/
+/*    border: 1px solid #666;*/
+/*    background: #fff;*/
+/*    vertical-align: -5px;*/
+
+/*}*/
+
+
+
+/*.*/
+/*.register button_c {*/
+/*   float: right;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.register >div >ul .button {*/
+/*    position: relative;*/
+/*    padding: 0 18px;*/
+/*}*/
+
+
+
+
+
+/*.register .button {*/
+/*    float: right;*/
+/*    width: 100px;*/
+/*    height: 30px;*/
+/*    box-sizing: border-box;*/
+/*    text-indent: 14px;*/
+/*    background: #ed1c24;*/
+/*    font-size: 18px;*/
+/*    color: #fff;*/
+/*}*/
+/*.register .button li ~ li:after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    top: 4px;*/
+/*    left: 0;*/
+/*    height: 14px;*/
+/*    width: 1px;*/
+/*    background: #111;*/
+/*    transform: rotate(25deg);*/
+/*}*/

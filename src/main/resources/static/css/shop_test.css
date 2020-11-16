@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display|Roboto:300,400,700');
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* reset.css by hyejin */
+*, *:before, *:after { box-sizing: border-box; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,p,button,table,th,td,input {margin:0;padding:0;}
+input, fieldset, img, iframe {border:0;}
+ul,ol {list-style-type:none;}
+a {color:inherit;text-decoration:none;outline: none;cursor:pointer; }
+a:hover, a:focus {color:inherit;text-decoration:none;}
+.hidden {display:none !important;}
+button {border:none;background:none;cursor:pointer;outline:none;}
+button:disabled, button:disabled:hover {cursor: default;}
+
+/* style */
+body { background: #000; }
+h1 { color: #fff; }
+ul { overflow: hidden; }
+li { float: left; margin: 10px; width: calc(25% - 20px); background: #fff; text-align: center; }
+
+li:nth-child(2) .album-cover {
+    background-image: url('https://cdnimg.melon.co.kr/cm/album/images/100/10/416/10010416_org.jpg');
+}
+li:nth-child(3) .album-cover {
+    background-image: url('https://cdnimg.melon.co.kr/cm/album/images/100/00/581/10000581_org.jpg');
+}
+li:nth-child(4) .album-cover {
+    background-image: url('https://cdnimg.melon.co.kr/cm/album/images/026/57/056/2657056_org.jpg');
+}
+
+.album-cover {
+    width: 100%;
+    height: 260px;
+    background-image: url('https://cdnimg.melon.co.kr/cm/album/images/100/16/426/10016426_org.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.album-info {
+    padding: 10px;
+}
+
+.album-title {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.album-date {
+    font-size: 12px;
+}
+
+/*
+https://cdnimg.melon.co.kr/cm/album/images/100/10/416/10010416_org.jpg
+https://cdnimg.melon.co.kr/cm/album/images/100/00/581/10000581_org.jpg
+https://cdnimg.melon.co.kr/cm/album/images/026/57/056/2657056_org.jpg */

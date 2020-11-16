@@ -1,0 +1,88 @@
+.login {
+    width: 410px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-49%, -50%);
+}
+
+
+.login h2 {
+    board-bottom: 2px solid #000;
+    text-align: center;
+    line-height: 1;
+    pont-size: 32px;
+    color: #111;
+    padding: 0 0 12px;
+}
+
+.login li {
+    padding: 0 0 12px;
+}
+
+.login li input {
+    width: 100%;
+    height: 46px;
+    box-sizing: border-box;
+    text-indent: 16px
+}
+
+.login li input::-webkit-calendar-picker-indicator {
+    font-size: 16px;
+    color: #9fa19f;
+}
+
+.login li input[type="checkbox"] {
+    position: absolute;
+    left: -3000%;
+}
+
+.login li input[type="checkbox"] + label:before {
+    content: "";
+    width: 18px;
+    display: inline-block;
+<!-- 인라인블럭으로 밑으로 떨어지게 --> width: 18px;
+    height: 18px;
+    border: 1px solid #666;
+    background: #fff;
+    vertical-align: -5px;
+<!-- 버티컬얼라인은 비뚫어진거 배열해줄떄 -->
+}
+
+.login li input[type="checkbox"]:checked + label:before {
+    color: red;
+    background: url(../../../resources/static/img/ico_check_on.png) no-repeat center #333;
+    border-color: #333;
+}
+
+.login button {
+    width: 100%;
+    height: 56px;
+    background: #ed1c24;
+    font-size: 18px;
+    color: #fff;
+}
+
+.login div ul {
+    display: flex;
+    justify-content: center;
+}
+
+.login div li {
+    position: relative;
+    padding: 0 18px;
+}
+
+.login div ul li ~ li:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 4px;
+    left: 0;
+    height: 14px;
+    width: 1px;
+    background: #111;
+    transform: rotate(25deg);
+}
+
+<!-- rotate 슬래쉬 각조조절 -->

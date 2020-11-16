@@ -1,0 +1,52 @@
+@charset "utf-8";
+/*!* CSS Document *!*/
+/*.jump{   width: 100vw;*/
+/*    height: 100vh;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    display: flex;*/
+/*    padding: 1rem 0;}*/
+/*.product_list { width:1188px; height: 200px; padding: 50px; height: 40vh; }*/
+/*.jump img{width:374px; height:374px; z-index: -10;}*/
+/*.product_list li { float:left; margin:0 20px 20px 0; position:relative; width:374px; height:501px; border:1px solid #d9d9d9;}*/
+/*.product_list li:hover { border-color:#333;}*/
+/*.product_list dl { padding:374px 0 0 0;}*/
+/*.product_list dt { padding:11px 10px 14px; border-top:1px solid #f0f0f0;}*/
+/*.product_list dt a { font-size:16px; color:#1a1a1a;}*/
+/*.product_list .img { position:absolute; left:0; top:0;}*/
+/*.product_list .price { padding:0 0 0 10px; font-size:21px; color:#1a1a1a; font-weight:bold;}*/
+/*.product_list .btm { position:absolute; left:0; bottom:0; width:100%; border-top:1px solid #f0f0f0; background:#fafafa;}*/
+/*.product_list .btm button{width: 100%;}*/
+/*.product_list .btm div { float:left; width:50%; height:30px; line-height:30px; text-align:center; font-size:12px; color:#767676;}*/
+/*.product_list .btm div a { font-size:12px; color:#767676;}*/
+/*.product_list .btm div a img { padding:0 4px 0 0;}*/
+
+/*!*!**!*/
+/*.product_list .btm div a { display:inline-block; padding:0 0 0 23px; height:30px; line-height:30px; font-size:12px; color:#767676; background:url(../images/ico_heart.jpg) no-repeat left;}*/
+/**!*/
+/**{margin: 0; padding: 0; text-decoration:  none; font-family: "montserrat"; }*/
+body{background-color: #f5f5f5;}
+.bonce{ position: relative;  width: 50%; padding: 0 25%; }
+.bonce .card{width: 360px; display: contents; text-align: center; }
+/*position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);*/
+.bonce .card .top-section{
+    height: 310px; overflow: hidden; background: #fff; position: relative;
+}
+/*li { float: left; margin: 10px; width: calc(25% - 20px); background: #fff; text-align: center; }*/
+
+#image-container{width: 360px; height: 240px;  }
+#image-container_1{width: 360px; height: 240px;  }
+#image-container_2{width: 360px; height: 240px;  }
+
+
+.nav{text-align: center; }
+.nav img{width: 80px; height: 50px; border: 1px solid #ddd;
+    margin: 8px 2px; cursor: pointer; transition: 0.3s;}
+.nav img:hover{border-color: #6a6a6a;}
+.price_1{position: absolute; top: 20px; right: 20px; color: bisque; font-size: 24px;  }
+.product-info{padding: 0;}
+.name{text-transform: uppercase; font-size: 24px;color: #000;}
+.dis{font-size: 16px; opacity:  0.7; padding: 0;}
+.quantity input{border:none; width: 30px; font-width: 500; text-align: center; color: #2d5b79;}
+.total_price{font-size: 16px; opacity:  0.7; padding: 0;}
+.btn{ background: #6a6a6a; text-align: center; color: #fff; padding: 10px; margin-top: 10px; transition: 0.3s;margin-bottom: 35px;}
