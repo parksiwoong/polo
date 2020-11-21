@@ -1,18 +1,25 @@
 package popor.com.vos.users;
 
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.HttpServletRequest;
+import popor.com.utility.Sha512;
 public class UserLoginVo {
     private final String email;
     private final String password;
-    private final HttpSession session;
+    private final String hashedPassword;
+    private final HttpServletRequest request;
 
-    public UserLoginVo(String email, String password, HttpSession session) {
+
+    public UserLoginVo(String email, String password, HttpServletRequest request) {
         this.email = email;
         this.password = password;
-        this.session = session;
+        this.hashedPassword = Sha512.hash(this.password);
+        this.request = request;
+
     }
 
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
 
     public String getEmail() {
         return this.email;
@@ -22,7 +29,6 @@ public class UserLoginVo {
         return this.password;
     }
 
-    public HttpSession getSession() {
-        return this.session;
-    }
+    public HttpServletRequest getRequest() { return request; }
+
 }

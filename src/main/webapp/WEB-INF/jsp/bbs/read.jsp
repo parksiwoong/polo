@@ -20,8 +20,14 @@
     <meta charset="UTF-8">
     <title>글 읽기</title>
     <script defer src="js/read.js"></script>
+    <link rel="stylesheet" href="/css/read.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+
 </head>
 <body>
+<%--<%@ include file = "../main/top.jsp" %>--%>
+
 <%
     assert boardReadResponseVo != null; // 아무 의미 없다. 사용 지양
     switch (boardReadResponseVo.getBoardReadResult()) {
@@ -35,13 +41,10 @@
             out.print("<script>alert('해당 게시글을 읽을 권한이 없습니다.'); window.history.back();</script>");
             return;
     }
-%>
-<div>제목 : <%= boardReadResponseVo.getTitle() %>
-</div>
-<div>작성자 : <%= boardReadResponseVo.getWriter() %>
-</div>
-<div>내용 : <%= boardReadResponseVo.getText() %>
-</div>
+%><div class="main_1">
+<div>제목 :<div class="main_2"> <%= boardReadResponseVo.getTitle() %></div></div>
+<div>작성자 :<div class="main_2"> <%= boardReadResponseVo.getWriter() %></div></div>
+<div>내용 : <%= boardReadResponseVo.getText() %></div>
 <form id="comment-form" method="post">
     <input type="text" name="text" maxlength="100" placeholder="댓글" autofocus>
     <input type="submit" value="작성">
@@ -83,7 +86,9 @@
         out.println("<input type=\"submit\" value=\"삭제\">");
         out.println("</form>");
     }
-%>
+%></div>
+<%@ include file = "../main/bottom.jsp" %>
+
 </body>
 </html>
 

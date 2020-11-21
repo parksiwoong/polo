@@ -3,7 +3,10 @@ package popor.com.utility;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import popor.com.vos.users.UserVo;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Converter {
@@ -22,5 +25,40 @@ public class Converter {
         }catch (Exception ignored){
             return fallback;
         }
+
+    }
+
+    public static void setUserVo(HttpServletRequest request, UserVo userVo) {
+        request.getSession().setAttribute("UserVo", userVo);
+    }
+
+//     converter.setUserVo(request, null);
+
+    public static UserVo getUserVo(HttpServletRequest request) {
+        Object userVoObject = request.getSession().getAttribute("UserVo");
+        UserVo userVo = null;
+        if (userVoObject instanceof UserVo) {
+            userVo = (UserVo) userVoObject;
+        }
+        return userVo;
+    }
+
+    public static int toInt(String input, int fallback) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception ignored) {
+            return fallback;
+        }
+    }
+
+
+
+    public static UserVo getUserVo(HttpSession session) {
+        Object userVoObject = session.getAttribute(Constant.Apis.ATTRIBUTE_ENTRY_USER_VO);
+        UserVo userVo = null;
+        if (userVoObject instanceof UserVo) {
+            userVo = (UserVo) userVoObject;
+        }
+        return userVo;
     }
 }

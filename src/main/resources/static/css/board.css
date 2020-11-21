@@ -27,7 +27,7 @@
 /*em {*/
 /*    font-style: italic;*/
 /*}*/
-.baram{position: relative; height: 73vh;background: #f5f5f5;min-height: 100%;
+.baram{position: relative; height: 48vh;background: #f5f5f5;min-height: 100%;
     padding: 200px;}
 table {
     width: 100%;
@@ -196,3 +196,6 @@ tbody:hover tr:hover td {
     justify-content: center;
 }
 
+.mid{
+    width: 100%;text-align: center; background-color:  #f5f5f5;
+}

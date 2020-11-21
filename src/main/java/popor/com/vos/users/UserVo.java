@@ -3,19 +3,14 @@ package popor.com.vos.users;
 public class UserVo {
     private final int index;
     private final String email;
-    private  String password;
-    private  String name;
-    private  String nickname;
-    private  String contact;
-    private int level;
+    private final String password;
+    private final String name;
+    private final String nickname;
+    private final String contact;
+    private final int level;
+    private static final String EMAIL_REGEX = "^(?=.{4,100}.$)([0-9a-zA-Z][0-9a-zA-Z\\-_.]*[0-9a-zA-Z])@([0-9a-z][0-9a-z\\-]*[0-9a-z]\\.)?([0-9a-z][0-9a-z\\-]*[0-9a-z])\\.([a-z]{2,15})(\\.[a-z]{2})?$";
+    private static final String PASSWORD_REGEX = "^([0-9a-zA-Z`~!@#$%^&*()\\-_=+\\[{\\]}\\\\|;:'\",<.>/?]{4,100})$";
 
-
-    public UserVo(int index, String email, String password, String name) {
-        this.index = index;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-    }
 
 
     public UserVo(int index, String email, String password, String name, String nickname, String contact, int level){
@@ -29,10 +24,6 @@ public class UserVo {
 
     }
 
-    public UserVo(int index, String email){
-        this.index= index;
-        this.email = email;
-    }
 
     public int getIndex() {
         return this.index;
@@ -61,5 +52,8 @@ public class UserVo {
     public int getLevel() {
         return this.level;
     }
+
 }
+
+
 

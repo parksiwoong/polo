@@ -6,6 +6,7 @@ import popor.com.vos.users.UserLoginVo;
 import popor.com.vos.users.UserRegisterVo;
 import popor.com.vos.users.UserResetVo;
 import popor.com.vos.users.UserVo;
+import popor.com.vos.users_members.FindEmailVo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +31,7 @@ public class UserDao {
                 "  AND `user_password` = ? " +
                 "LIMIT 1")) {
             preparedStatement.setString(1, userLoginVo.getEmail());
-            preparedStatement.setString(2, userLoginVo.getPassword());
+            preparedStatement.setString(2, userLoginVo.getHashedPassword());
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
                 while (resultSet.next()) {
@@ -82,6 +83,24 @@ public class UserDao {
         return userVo;
     }
 
+    public String selectEmail(Connection connection, FindEmailVo findEmailVo)
+            throws SQLException {
+        String email = null;
+        String query = "SELECT `user_email` AS `userEmail`\n" +
+                "FROM `tldnd8989`.`popor_users`\n" +
+                "WHERE `user_name` = ? AND `user_contact` = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, findEmailVo.getName());
+            preparedStatement.setString(2, findEmailVo.getContact());
+            preparedStatement.executeQuery();
+            try (ResultSet resultSet = preparedStatement.getResultSet()) {
+                while (resultSet.next()) {
+                    email = resultSet.getString("userEmail");
+                }
+            }
+        }
+        return email;
+    }
     public int selectEmailCount(Connection connection, String email)
             throws SQLException {
         int count;
@@ -130,7 +149,7 @@ public class UserDao {
                 "INSERT INTO `tldnd8989`.`popor_users` (user_email, user_password, user_name, user_nickname, user_contact) " +
                 "VALUES (?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, userRegisterVo.getEmail());
-            preparedStatement.setString(2, userRegisterVo.getPassword());
+            preparedStatement.setString(2, userRegisterVo.getHashedPassword());
             preparedStatement.setString(3, userRegisterVo.getName());
             preparedStatement.setString(4, userRegisterVo.getNickname());
             preparedStatement.setString(5, userRegisterVo.getContact());

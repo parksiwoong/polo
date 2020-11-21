@@ -71,7 +71,7 @@ public class BBSController {
                           @RequestParam(name = "id", defaultValue = "") String id,
                           @RequestParam(name = "page", defaultValue = "") String page,
                           @RequestParam(name = "title", defaultValue = "") String title,
-                          @RequestParam(name = "text", defaultValue = "") String text) throws
+                          @RequestParam(name = "content", defaultValue = "") String text) throws
             SQLException, IOException,
             NotImplementedException {
         UserVo userVo = Variable.getUserVo(request);
@@ -99,11 +99,6 @@ public class BBSController {
                           @RequestParam(name = "id", defaultValue = "") String id,
                           @RequestParam(name = "page", defaultValue = "1") String page) throws
             SQLException {
-//        Object userVoObject = session.getAttribute("UserVo");
-//        UserVo userVo = null;
-//        if (userVoObject instanceof UserVo) {
-//            userVo = (UserVo) userVoObject;
-//        }
         BoardReadVo boardReadVo = new BoardReadVo(articleId, id, page);
         BoardReadResponseVo boardReadResponseVo = this.boardService.read(Variable.getUserVo(request), boardReadVo);
         request.setAttribute("BoardReadResponseVo", boardReadResponseVo);

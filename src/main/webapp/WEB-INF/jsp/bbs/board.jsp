@@ -21,14 +21,16 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
+<%@ include file = "../main/top.jsp" %>
+
 <%
     String id = request.getParameter("id");
     String pageNum = request.getParameter("page") == null ? "1" : request.getParameter("page");
     assert boardResponseVo != null; // boardResponseVo 는 Null 이 아니다! 라는 프로그램적 설정
     if (boardResponseVo.getBoardResponseResult() == BoardResponseResult.NO_MATCHING_ID) {
-        out.print("<script>alert(\"존재하지 않는 게시판입니다.\"); window.location.href=\"/board?id=ntc\"</script>");
+        out.print("<script>alert(\"존재하지 않는 게시판입니다.\"); window.location.href=\"/polo\"</script>");
     } else if (boardResponseVo.getBoardResponseResult() == BoardResponseResult.NOT_AUTHORIZED) {
-        out.print("<script>alert(\"해당 게시판을 읽을 권한이 없습니다. 로그인하지 않았다면 로그인 후 시도해주세요.\"); window.location.href=\"/board?id=fre\"</script>");
+        out.print("<script>alert(\"해당 게시판을 읽을 권한이 없습니다. 로그인하지 않았다면 로그인 후 시도해주세요.\"); window.location.href=\"/polo\"</script>");
     } else if (boardResponseVo.getBoardResponseResult() == BoardResponseResult.OKAY) {
         String keyword = request.getParameter("keyword");
         String what = request.getParameter("what");
@@ -63,7 +65,7 @@
         out.println("</tbody>");
         out.println("</table>");
         out.println("</div>");
-        out.println("<div>");
+        out.println("<div class=\"mid\">");
         if (boardResponseVo.getRequestPage() > 1) {
             if (boardResponseVo.isSearchResult()) {
                 out.println("<span><a href=\"search?id=" + id + "&page=1&keyword=" + keyword + "&what=" + what + "\">처음</a></span>");
@@ -97,11 +99,11 @@
         }
         out.println("</div>");
         if (boardResponseVo.isSearchResult()) {
-            out.println("<a href=\"board?id=" + request.getParameter("id") + "\">검색 초기화</a>");
+            out.println("<div class=\"mid\" ><a  href=\"board?id=" + request.getParameter("id") + "\">검색 초기화</a></div>");
         }
     }
 %>
-<form id="search-form" action="/search" method="get">
+<form id="search-form" class="mid" action="/search" method="get">
     <input type="hidden" name="id" value="<%= request.getParameter("id") %>">
     <select name="what">
         <option value="title" selected>제목</option>
@@ -111,6 +113,8 @@
     <input type="text" name="keyword" maxlength="50" placeholder="검색" autofocus>
     <input type="submit" value="검색">
 </form>
-<a href="write?id=<%= id %>&page=<%= pageNum %>">글 작성</a>
+<div class="mid" style="height: 23vh;"><a href="write?id=<%= id %>&page=<%= pageNum %>">글 작성</a></div>
+<%@ include file = "../main/bottom.jsp" %>
+
 </body>
 </html>

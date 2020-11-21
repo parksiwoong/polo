@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/bottom.css">
-    <script defer src="/js/reset.js"></script>
+<%--    <script defer src="/js/reset.js"></script>--%>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script defer src="${pageContext.request.contextPath}/js/find_password.js"></script>
 
@@ -32,8 +32,8 @@
 
         <div>
             <ul>
-                <li><a href="/logint">로그인 페이지로 돌아가기</a></li>
-
+                <li><a href="/login">로그인 페이지로 돌아가기</a></li>
+<%--                <%= %>--%>
             </ul>
         </div>
     </ul>

@@ -29,9 +29,7 @@ public class BoardReadResponseVo {
         return title;
     }
 
-    public String getText() {
-        return text;
-    }
+    public String getText() { return text; }
 
     public String getWriter() {
         return writer;

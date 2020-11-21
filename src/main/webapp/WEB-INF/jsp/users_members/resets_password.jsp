@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>비밀번호 재설정</title>
   <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/bottom.css">
   <script defer src="${pageContext.request.contextPath}/js/reset_password.js"></script>
 </head>

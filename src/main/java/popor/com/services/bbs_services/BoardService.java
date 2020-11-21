@@ -93,7 +93,7 @@ public class BoardService {
             SQLException {
         try (Connection connection = this.dataSource.getConnection()) {
             if (userVo == null) {
-                userVo = new UserVo(0, "nan", "nan", "비회원", "비회원", "", 10);
+                userVo = new UserVo(0, "nan", "nan", "비회원", "비회원", "nan", 10);
             }
             BoardLevelVo boardLevelVo = this.boardDao.selectBoardLevel(connection, boardWriteVo);
             if (boardLevelVo == null)
@@ -110,7 +110,7 @@ public class BoardService {
             SQLException {
         try (Connection connection = this.dataSource.getConnection()) {
             if (userVo == null) {
-                userVo = new UserVo(0, "nan", "nan", "비회원", "비회원", "nan",10);
+                userVo = new UserVo(0, "nan", "nan", "비회원", "비회원", "nan",  10);
             }
             BoardLevelVo boardLevelVo = this.boardDao.selectBoardLevel(connection, boardReadVo);
             if (boardLevelVo == null)

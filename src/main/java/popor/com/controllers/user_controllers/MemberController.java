@@ -1,15 +1,19 @@
 package popor.com.controllers.user_controllers;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import popor.com.enums.FindIdResult;
+import org.springframework.web.bind.annotation.ResponseBody;
+import popor.com.enums.users_members.EmailFindResult;
 import popor.com.enums.users_members.FindPasswordResult;
 import popor.com.services.userServices.UserService;
+import popor.com.utility.EmailFindResultContainer;
 import popor.com.vos.ResetPasswordVo;
-import popor.com.vos.users_members.FindIdVo;
+import popor.com.vos.users_members.FindEmailVo;
 import popor.com.vos.users_members.FindPasswordVo;
 import popor.com.enums.users_members.ResetPasswordResult;
 
@@ -30,24 +34,30 @@ public class MemberController {
 //    public String
 
 
-    @RequestMapping(value = "/id_reset", method = RequestMethod.GET)
+    @RequestMapping(value = "/select_email", method = RequestMethod.GET)
     public String idResetGet(HttpServletRequest request, HttpServletResponse response){
-        return "find_id";
+        return "users_members/select_email";
     }
 
-    @RequestMapping(value = "/id_reset", method = RequestMethod.POST)
-    public String idResetPost(HttpServletRequest request, HttpServletResponse response,
-                            @RequestParam(name = "name",defaultValue = "")String name,
-                            @RequestParam(name = "contact", defaultValue = "") String contact)
-        throws SQLException{
-        FindIdVo findIdVo = new FindIdVo(name,contact, request.getSession());
-        FindIdResult findIdResult = this.userService.findId(findIdVo);
-        request.getSession().setAttribute("FindIdResult", findIdResult);
-        request.getSession().setAttribute("FindIdVo", findIdVo);
-        // 리퀘스트로 받고 갯세션으로 가져온후에 그 가저온 갯세션에 셋 어트리뷰트로 저장
-        return "users_members/reset_id";
+    @RequestMapping(value = "/select_email",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String findEmailPost(HttpServletRequest request, HttpServletResponse response,
+                                @RequestParam(name = "name", defaultValue = "") String name,
+                                @RequestParam(name = "contact", defaultValue = "") String contact)
+            throws SQLException {
+        FindEmailVo findEmailVo = new FindEmailVo(name, contact);
+        EmailFindResultContainer emailFindResultContainer = this.userService.findEmail(findEmailVo);
+//        response.getWriter().print(emailFindResultContainer.getFindEmailResult().name());
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("result", emailFindResultContainer.getFindEmailResult().name().toLowerCase());
+        if (emailFindResultContainer.getFindEmailResult() == EmailFindResult.SUCCESS) {
+            jsonResponse.put("email", emailFindResultContainer.getEmail());
+        }
+        return jsonResponse.toString(4);
+//        request.getSession().setAttribute("result", emailFindResultContainer.getFindEmailResult().name());
     }
-
 
     @RequestMapping(value = "/find_password", method = RequestMethod.GET)
     public String findPasswordGet(HttpServletRequest request, HttpServletResponse response) {

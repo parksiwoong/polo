@@ -100,14 +100,14 @@ public class BoardDao {
         if (searchVo.getWhat().equals("title")) {
             // 제목 기준 검색
             query = "" +
-                    "SELECT `Article`.`article_index`      AS `articleIndex`, " +
+                    "SELECT `article`.`article_index`      AS `articleIndex`, " +
                     "       `user`.`user_nickname`         AS `userNickname`, " +
                     "       `article`.`article_title`      AS `articleTitle`, " +
                     "       `article`.`article_content`    AS `articleContent`, " +
                     "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                     "       `article`.`article_hit`        AS `articleHit` " +
-                    "FROM `tldnd8989`.`articles` AS `article` " +
-                    "         INNER JOIN `tlndd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
+                    "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                     "WHERE `board_id` = ? " +
                     "  AND REPLACE(`article_title`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%' " +
                     "ORDER BY `article_index` DESC " +

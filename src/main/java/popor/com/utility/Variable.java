@@ -17,7 +17,7 @@ public class Variable {
     }
 
     public static UserVo getAnonymousUserVo() {
-        return new UserVo(0, "nan", "nan", "비회원", "비회원", "nan", 10);
+        return new UserVo(0, "nan", "nan", "비회원", "비회원", "nan",  10);
     }
 
     public static boolean isSigned(HttpServletRequest request) {

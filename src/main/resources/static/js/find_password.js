@@ -7,6 +7,7 @@ if (result !== null) {
         alert('정보가 일치하는 회원을 찾을 수 없습니다.');
         window.history.back();
     } else if (result === 'email_sent') {
-        window.location.href='/user_members/email_sent';
+        alert('이메일을 전송하였습니다..');
+        // window.location.href='/user_members/email_sent';
     }
 }

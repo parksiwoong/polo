@@ -1,11 +1,12 @@
 <%@ page import="popor.com.enums.FindIdResult" %>
+<%@ page import="popor.com.enums.users_members.EmailFindResult" %>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
- <%    Object findIdResultObject = session.getAttribute("FindResultObect");
-     FindIdResult findIdResult = null;
-     if ( instanceof FindIdVo) {
-     findIdVo = (FindIdVo) findIdVoObject;
+ <%
+     Object emailFindResultObject = session.getAttribute("result");
+     EmailFindResult emailFindResult = null;
+     if(emailFindResultObject instanceof EmailFindResult){
+         emailFindResult = (EmailFindResult)emailFindResultObject;
      }
-     session.getAttribute("findIdVo");
  %>
  <!DOCTYPE html>
 <html lang="UTF-8">
@@ -25,20 +26,21 @@
 
 
 <body>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <div style="height: auto; min-height: 100%; padding-bottom:50%;">
 
     <ul class="reset">
         <h2>아이디찾기</h2>
         <form id="id_reset-form" method="post">
-        <li><input id="email" name="name" type="email" placeholder="이름" maxlength="100" autofocus></li>
-            <li><input id="password" name="contact" type="tel" placeholder="전화번호" maxlength="100"></li>
-            <li><input type="submit" value="아이디 찾기"></li>
+        <li><input id="email" name="name" type="test" placeholder="이름" maxlength="100" autofocus></li>
+            <li><input id="contact" name="contact" type="tel" placeholder="전화번호" maxlength="100"></li>
+            <li><input type="submit" value="아이디 찾기<=% %>"></li>
+
         </form>
 
         <div>
             <ul>
-                <li><a href="/logint">로그인 페이지로 돌아가기</a></li>
+                <li><a href="/logint"> </a></li>
 
             </ul>
         </div>

@@ -72,7 +72,7 @@
         <div>
             <ul>
                 <li><a href="/register">회원가입</a></li>
-                <li><a href="id_reset">아이디 찾기</a></li>
+                <li><a href="/select_email">아이디 찾기</a></li>
                 <li><a href="/find_password">비밀번호 찾기</a></li>
             </ul>
         </div>

@@ -1,0 +1,15 @@
+.main_1 {
+    width: 410px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-49%, -50%);
+
+}
+/*.main_1 .main_2{*/
+/*    display: flex;*/
+/*    border-style: solid;*/
+/*    width: 100%;*/
+/*    height: 46px;*/
+/*    box-sizing: border-box;*/
+/*    text-indent: 16px}*/
