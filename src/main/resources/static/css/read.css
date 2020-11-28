@@ -6,6 +6,9 @@
     transform: translate(-49%, -50%);
 
 }
+image{ max-width: 500px; height: auto}
+
+
 /*.main_1 .main_2{*/
 /*    display: flex;*/
 /*    border-style: solid;*/

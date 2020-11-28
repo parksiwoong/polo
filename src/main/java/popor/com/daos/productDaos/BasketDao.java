@@ -18,17 +18,13 @@ public class BasketDao {
             SQLException {
         String query = "" +
                 "INSERT INTO `tldnd8989`.`baskets` (`user_index`,\n" +
-                "                             `item_index`,\n" +
-                "                             `color_index`,\n" +
-                "                             `size_index`,\n" +
-                "                             `basket_count`)\n" +
-                "VALUES (?, ?, ?, ?, ?)";
+                "                                   `item_index`,\n" +
+                "                                   `basket_count`)\n" +
+                "VALUES (?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userVo.getIndex());
             preparedStatement.setInt(2, addVo.getItemIndex());
-            preparedStatement.setInt(3, addVo.getColorIndex());
-            preparedStatement.setInt(4, addVo.getSizeIndex());
-            preparedStatement.setInt(5, addVo.getCount());
+            preparedStatement.setInt(3, addVo.getCount());
             preparedStatement.execute();
         }
     }
@@ -40,15 +36,11 @@ public class BasketDao {
                 "SET `basket_count`    = `basket_count` + ?,\n" +
                 "    `basket_datetime` = CURRENT_TIMESTAMP()\n" +
                 "WHERE `user_index` = ?\n" +
-                "  AND `item_index` = ?\n" +
-                "  AND `color_index` = ?\n" +
-                "  AND `size_index` = ?";
+                "  AND `item_index` = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, addVo.getCount());
             preparedStatement.setInt(2, userVo.getIndex());
             preparedStatement.setInt(3, addVo.getItemIndex());
-            preparedStatement.setInt(4, addVo.getColorIndex());
-            preparedStatement.setInt(5, addVo.getSizeIndex());
             preparedStatement.execute();
         }
     }
@@ -99,14 +91,11 @@ public class BasketDao {
                 "SELECT COUNT(`basket_index`) AS `count`\n" +
                 "FROM `tldnd8989`.`baskets`\n" +
                 "WHERE `user_index` = ?\n" +
-                "  AND `item_index` = ?\n" +
-                "  AND `color_index` = ?\n" +
-                "  AND `size_index` = ?";
+                "  AND `item_index` = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userVo.getIndex());
             preparedStatement.setInt(2, addVo.getItemIndex());
-            preparedStatement.setInt(3, addVo.getColorIndex());
-            preparedStatement.setInt(4, addVo.getSizeIndex());
+
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 resultSet.next();
                 count = resultSet.getInt("count");

@@ -57,7 +57,7 @@
     <div class="inb">
 
         <a href="/polo" class="on"><span>promotion</span> </a>
-        <a href="/productCart/product"><span>store</span> </a>
+        <a href="/add/"><span>store</span> </a>
         <a href="/kakaomap"><span>location</span> </a>
         <a href="/board?id=qna"><span> QNA </span></a>
         <span></span>

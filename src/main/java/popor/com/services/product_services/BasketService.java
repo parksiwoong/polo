@@ -7,6 +7,7 @@ import popor.com.daos.productDaos.BasketDao;
 import popor.com.enums.productbasket.AddResult;
 import popor.com.enums.productbasket.GetResult;
 import popor.com.utility.BasketGetResultContainer;
+
 import popor.com.vos.basket.AddVo;
 import popor.com.vos.basket.BasketVo;
 import popor.com.vos.users.UserVo;
@@ -29,7 +30,7 @@ public class BasketService {
 
     public AddResult add(UserVo userVo, AddVo addVo) throws
             SQLException {
-        if (addVo.getItemIndex() < 0 || addVo.getColorIndex() < 0 || addVo.getSizeIndex() < 0 || addVo.getCount() < 0) {
+        if (addVo.getItemIndex()  < 0 || addVo.getCount() < 0) {
             return AddResult.INVALID_INPUT;
         }
         if (userVo == null) {

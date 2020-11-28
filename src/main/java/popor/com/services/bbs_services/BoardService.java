@@ -51,7 +51,7 @@ public class BoardService {
                     ArrayList<ArticleVo> articles = this.boardDao.selectArticles(connection, boardVo);
                     int requestPage = boardVo.getPage();
                     int total = this.boardDao.selectTotalArticleCount(connection, boardVo);
-                    int maxPage = total % 5 == 0 ? total / 5 : (int) (Math.floor((double) total / 5) + 1); //mysql pagging
+                    int maxPage = total % 10 == 0 ? total / 10 : (int) (Math.floor((double) total / 10) + 1);
                     int startPage = requestPage < 6 ? 1 : requestPage - 5;
                     int endPage = Math.min(maxPage, requestPage + 5);
                     boardResponseVo = new BoardResponseVo(BoardResponseResult.OKAY, articles, requestPage, maxPage, startPage, endPage, false);

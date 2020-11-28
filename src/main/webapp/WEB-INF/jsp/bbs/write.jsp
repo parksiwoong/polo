@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <script defer type="text/javascript" src="js/ckeditor.js"></script>
     <script defer type="text/javascript" src="js/write.js"></script>
+    <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <%--<%@ include file="../main/top.jsp" %>--%>
@@ -31,9 +32,19 @@
             <td><!-- 제목 --><label><input class="property-full-width" type="text" name="title" maxlength="100" placeholder="제목"></label></td>
         </tr>
         <tr>
-            <td><!-- 텍스트 --><label><textarea id="textarea2" class="property-full-width" name="content" maxlength="10000" placeholder=""></textarea></label></td>
+            <td><!-- 텍스트 --><label for=textarea2 ><textarea id="textarea2" class="property-full-width" name="content" maxlength="10000" placeholder=""></textarea></label></td>
         </tr>
         </tbody>
+        <script>
+            var ckeditor_config = {
+                resize_enaleb : false,
+                enterMode : CKEDITOR.ENTER_BR,
+                shiftEnterMode : CKEDITOR.ENTER_P,
+                filebrowserUploadUrl : "/admin/goods/ckUpload"
+            };
+
+            CKEDITOR.replace("textarea2", ckeditor_config);
+        </script>
         <tfoot>
         <tr>
             <td><!-- 작성 버튼 등등 -->

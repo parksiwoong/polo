@@ -73,10 +73,15 @@ public class UserController {
 
             throws SQLException, IOException {
         UserRegisterVo userRegisterVo = new UserRegisterVo(email,password,name,nickname,contact);
-        UserRegisterResult userRegisterResult = this.userService.register(userRegisterVo);
-        request.getSession().setAttribute("UserRegisterResult", userRegisterResult);
-        request.getSession().setAttribute("UserRegisterVo", userRegisterVo);
-        response.sendRedirect("/register");
+        if(userRegisterVo.getEmail()==null){
+            response.sendRedirect("/register?result=falues");
+        }else {
+            UserRegisterResult userRegisterResult = this.userService.register(userRegisterVo);
+            request.getSession().setAttribute("UserRegisterResult", userRegisterResult);
+            request.getSession().setAttribute("UserRegisterVo", userRegisterVo);
+            response.sendRedirect("/register?result="+userRegisterResult.name().toLowerCase());
+        }
+
     }
 
 

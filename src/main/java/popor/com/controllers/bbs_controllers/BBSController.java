@@ -137,7 +137,7 @@ public class BBSController {
                     what,
                     keyword));
         }
-    }
+    } //이거찾아보기
 
     @RequestMapping(value = "/read", method = RequestMethod.DELETE)
     public void readDelete(HttpServletRequest request, HttpServletResponse response,

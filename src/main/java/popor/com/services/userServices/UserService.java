@@ -57,7 +57,7 @@ public class UserService {
                     userLoginResult = UserLoginResult.FAILURE;
                 } else {
 //                    userLoginVo.getRequest().setAttribute("UserVo", userVo);
-                    Converter.setUserVo(userLoginVo.getRequest(),userVo);
+                    Converter.setUserVo(userLoginVo.getRequest(), userVo);
                     userLoginResult = UserLoginResult.SUCCESS;
                 }
             }
@@ -71,17 +71,17 @@ public class UserService {
 
         try (Connection connection = this.dataSource.getConnection()) {
 
-            if(userRegisterVo.isNormalized()){userRegisterResult = UserRegisterResult.EMAIL_NO;}
-            else if(this.userDao.selectEmailCount(connection, userRegisterVo.getEmail()) > 0) {
+            if (!userRegisterVo.isNormalized()) {
+                userRegisterResult = UserRegisterResult.EMAIL_NO;
+            } else if (this.userDao.selectEmailCount(connection, userRegisterVo.getEmail()) > 0) {
                 userRegisterResult = UserRegisterResult.EMAIL_DUPLICATE;
-            }else if (this.userDao.selectNicknameCount(connection, userRegisterVo.getNickname()) > 0) {
+            } else if (this.userDao.selectNicknameCount(connection, userRegisterVo.getNickname()) > 0) {
                 userRegisterResult = UserRegisterResult.NICKNAME_DUPLICATE;
             } else if (this.userDao.selectContactCount(connection, userRegisterVo.getContact()) > 0) {
                 userRegisterResult = UserRegisterResult.CONTACT_DUPLICATE;
             } else if (this.userDao.selectContactCount(connection, userRegisterVo.getName()) > 0) {
                 userRegisterResult = UserRegisterResult.CONTACT_DUPLICATE;
-            }
-            else {
+            } else {
                 this.userDao.insertUser(connection, userRegisterVo);
                 if (this.userDao.selectEmailCount(connection, userRegisterVo.getEmail()) > 0) {
                     userRegisterResult = UserRegisterResult.SUCCESS;
