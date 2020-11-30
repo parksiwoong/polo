@@ -13,7 +13,7 @@
     <script defer src="/js/add.js"></script>
 </head>
 <body>
-<form  id="add" method="post">
+<form  id="add" method="post" enctype="multipart/form-data">
     <label for="name">상품명</label>
     <input name = "name" type="text" id="name"  autofocus/>
     <label for="price">가격</label>
@@ -22,6 +22,7 @@
     <input name = "color" type="text" id="color"  autofocus/>
     <label for="size">사이즈</label>
     <input name = "size" type="text" id="size"  size="30" autofocus/>
+    <input name = "file" type="file" id="file" />
     <input type="submit" class="button" value="작성">
 
 </form>

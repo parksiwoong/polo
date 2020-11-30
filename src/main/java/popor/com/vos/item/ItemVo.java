@@ -1,16 +1,21 @@
 package popor.com.vos.item;
 
+public class ItemVo {
 
-import org.springframework.web.multipart.MultipartFile;
-import popor.com.utility.Converter;
-
-public class AddVo {
-
+    private Integer index;
     private String name;
-    private int price;
+    private Integer price;
     private String color;
     private String size;
-    private MultipartFile file;
+    private String fileName;
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
 
     public String getName() {
         return name;
@@ -20,11 +25,11 @@ public class AddVo {
         this.name = name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -44,12 +49,12 @@ public class AddVo {
         this.size = size;
     }
 
-    public MultipartFile getFile() {
-        return file;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFile(MultipartFile file) {
-        this.file = file;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
 }

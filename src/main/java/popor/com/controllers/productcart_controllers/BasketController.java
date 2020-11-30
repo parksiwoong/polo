@@ -41,7 +41,7 @@ public class BasketController extends StandardRestController {
 
     @RequestMapping(value = "add")
     public String add(HttpServletRequest request, HttpServletResponse response,
-                      @RequestParam(name = "item_id", defaultValue = "") String itemIndex,
+                      @RequestParam(name = "itemIndex", defaultValue = "") String itemIndex,
                       @RequestParam(name = "count", defaultValue = "") String count) throws
             SQLException {
         UserVo userVo = Converter.getUserVo(request.getSession());

@@ -51,34 +51,20 @@ addForm.onsubmit = function () {
         alert("사이즈형식이 틀립니다.");
         addForm.elements["size"].focus();
         return false;
-
     } else {
-        let inputName = window.document.body.querySelector("#name");
-        let inputPrice = window.document.body.querySelector("#price");
-        let inputColor = window.document.body.querySelector("#color");
-        let inputSize = window.document.body.querySelector("#size");
-        alert("등록성공하였습니다.");
-//
-// let inputValue = [inputName.value, inputPrice.value, inputColor.value, inputSize.value];
 
-        let formData = new FormData();
-
-        formData.append("name", inputName.value)
-        formData.append("price", inputPrice.value)
-        formData.append("color", inputColor.value)
-        formData.append("size", inputSize.value)
-
+        let formData = new FormData(window.document.body.querySelector("form#add"));
+        // let inputValue = [inputName.value, inputPrice.value, inputColor.value, inputSize.value];
         function callback(response) {
             let result = JSON.parse(response);
             if (result['result'] === 'not_allowed') {
                 alert('권한 없음');
+            } else {
+                alert("등록성공하였습니다.");
             }
         }
-
         function fallback() {
-
         }
-
         xhr("POST", "/add", callback, fallback, formData);
         return false;
     }
