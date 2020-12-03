@@ -9,6 +9,7 @@ import popor.com.enums.productbasket.GetResult;
 import popor.com.utility.BasketGetResultContainer;
 
 import popor.com.vos.basket.AddVo;
+import popor.com.vos.basket.BasketListVo;
 import popor.com.vos.basket.BasketVo;
 import popor.com.vos.users.UserVo;
 
@@ -16,6 +17,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BasketService {
@@ -26,6 +28,14 @@ public class BasketService {
     public BasketService(DataSource dataSource, BasketDao basketDao) {
         this.dataSource = dataSource;
         this.basketDao = basketDao;
+    }
+
+    public List<BasketListVo> list(int userIndex) {
+        try (Connection connection = dataSource.getConnection()) {
+            return basketDao.list(connection, userIndex);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public AddResult add(UserVo userVo, AddVo addVo) throws
@@ -57,4 +67,14 @@ public class BasketService {
             return new BasketGetResultContainer(GetResult.SUCCESS, baskets);
         }
     }
+
+    public void delete(Integer basketIndex) {
+        // basketDao.delete(basketIndex);
+        try (Connection connection = dataSource.getConnection()) {
+            basketDao.delete(connection, basketIndex);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

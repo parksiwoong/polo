@@ -34,7 +34,7 @@
 <section>
     <div class="part1">
         <ul>
-            <li>  <video width="100%" style="padding: 150px 0 0;" muted autoplay loop><source src="/img/intro.mp4"></video></li>
+            <li>  <video width="100%"  muted autoplay loop><source src="/img/intro.mp4"></video></li>
             <li>      <a href="/man_shop"><div class="screen">
                 <div class="top"></div>
                 <div class="bottom" >자세히보기</div>
@@ -83,7 +83,7 @@
 <div class="sum">
     <ul>
         <li><img src="grey-line.WEBP" alt=""></li>
-        <li><img src="img/RL-Sign-Navy_0.WEBP" alt=""></li>
+        <li><img src="/img/RL-Sign-Navy_0.WEBP" alt=""></li>
         <li><img src="grey-line.WEBP" alt=""></li>
     </ul>
 </div>
@@ -108,20 +108,20 @@
 
 <%--        <div class="left">--%>
 <%--            <div>--%>
-<%--                <img src="img/html.png">--%>
-<%--                <img src="img/css3_4.png" width= "51px;" height= "49px;">--%>
-<%--                <img src="img/js.png">--%>
-<%--                <img src="img/java.png">--%>
-<%--                <img src="img/jsp.png">--%>
-<%--                <img src="img/myslq.png">--%>
-<%--                <img src="img/in.png">--%>
-<%--                <img src="img/visu.png">--%>
+<%--                <img src="/img/html.png">--%>
+<%--                <img src="/img/css3_4.png" width= "51px;" height= "49px;">--%>
+<%--                <img src="/img/js.png">--%>
+<%--                <img src="/img/java.png">--%>
+<%--                <img src="/img/jsp.png">--%>
+<%--                <img src="/img/myslq.png">--%>
+<%--                <img src="/img/in.png">--%>
+<%--                <img src="/img/visu.png">--%>
 
 <%--                <a href="#"><p style= "padding: 20px 0 0 0 ; font: italic bold 1em/1em Georgia, serif ;">메인 포토폴리오 돌아가기</p></a>--%>
 <%--            </div>--%>
 
 <%--        </div>--%>
-<%--        <div class="right">  <a href="#"><img src="img/up.jpg"></a></div>--%>
+<%--        <div class="right">  <a href="#"><img src="/img/up.jpg"></a></div>--%>
 
 <%--    </div>--%>
 <%--</footer>--%>

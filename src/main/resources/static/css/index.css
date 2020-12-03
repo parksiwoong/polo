@@ -4,9 +4,9 @@ button {
     background-color: #333;
     color: #fff;
 }
-button:hover {
-    letter-spacing: 5px;
-}
+/*button:hover {*/
+/*    letter-spacing: 5px;*/
+/*}*/
 *{padding: 0; margin:0; text-decoration:none; list-style: none;}
 header{position: relative;position:fixed ;  width: 100%; z-index: 100;   background: rgba(255, 255, 255); text-align: center;    padding:27PX 0 0 0 ;} /**/
 header .logo { height: 20px;  display: block; margin: 0 auto; border: 1px;  }
@@ -20,28 +20,24 @@ header .clearfix .right {  float: right; padding: 0 20px  0; }
 
 header .inb {display: inline-block;  font-size: 11px; padding: 20px 0  0 ; left:7%; } /*text-align: center; 가 float: left가 먹히지 않는다 이럴땐
 디스플레이 인라인블럭을 써야한다 디스플레이 인라인블럭은 줄내림하면 띄워쓰기가 된다*/
-header .inb {display: flex;position: relative; width: 50%; margin: 0 auto; font-size: 15px;}   /*디스플레이 인라인블럭을 준다음 플롯 레프트로 가로정렬*/
-header .inb  a{flex: 1;display: block;  color:#8f8f8f; line-height: 90px;  color: #000000;   }
+header .inb {display: flex;position: relative; width: 650px; margin: 0 auto; font-size: 14px;}   /*디스플레이 인라인블럭을 준다음 플롯 레프트로 가로정렬*/
+header .inb  a{flex: 1;display: block;  color:#8f8f8f; line-height: 70px;  color: #000000;   }
 header .inb  a:hover{ color: #2d5b79; font-weight: bold; }
-header .inb >span{position: absolute; left: 0; bottom: 0; width:150px;height: 7px;background: #192558;
+header .inb >span{position: absolute; left: 0; bottom: 0; width:105px;height: 4px;background: #5b5b5b;
     opacity: 0; transition: all .5s;} /*스펜에 들어있는 글씨가 밑줄기준이 되도록 relative 를 기준으로 넣어준다 */
 
 .inb a.on {color: #000;}
 
-.inb a:nth-child(1).on ~ span {left: 0; opacity: 1; }
-.inb a:nth-child(2).on ~ span {left: 164px; opacity: 1; }
-.inb a:nth-child(3).on ~ span {left: 320px; opacity: 1; }
-.inb a:nth-child(4).on ~ span {left: 480px; opacity: 1; }
-.inb a:nth-child(5).on ~ span {left: 648px; opacity: 1; }
+.inb a:nth-child(1).on ~ span {left: 27px; opacity: 1; }
+.inb a:nth-child(2).on ~ span {left: 191px; opacity: 1; }
+.inb a:nth-child(3).on ~ span {left: 356px; opacity: 1; }
+.inb a:nth-child(4).on ~ span {left: 517px; opacity: 1; }
+
+
+
 
 header nav ul {display : block ; text-align : center ;}
-/*.button {*/
-/*    background-color: #333;*/
-/*    color: #fff;*/
-/*}*/
-/*.button:hover {*/
-/*    letter-spacing: 5px; //늘어나는거 */
-/*}*/
+
 section .part1{width: 100%; margin: 0 auto; }
 section .part1 ul{font-size: 0;}
 section .part1 ul > li{display: inline;vertical-align: top ;}
@@ -55,10 +51,10 @@ section .part1 ul > li > a .screen .bottom{ transition: all .35s;
     position: absolute; top: 150%; left: 50%; z-index: 2; color: #fff; font-size: 40px; transform: translate( -50%, -50% );
 }
 section .part1 ul > li > a .screen img{width:100%; padding: 20px 0 0 0;}
-section .part1 ul > li > a .screen >span{padding: 150px 0 0   ;}
+/*section .part1 ul > li > a .screen >span{padding: 150px 0 0   ;}*/
 section .part1 ul > li > a h3 {font-size: 14px;text-align: center;padding: 20px;}
 
-/* section .part1 ul > li > a:hover .top {bottom: 52%;} */
+ section .part1 ul > li > a:hover .top {bottom: 52%;}
 section .part1 ul > li > a:hover .bottom {top:  52%;}
 
 section .part1 ul > li > a .screen::after{

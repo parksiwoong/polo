@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../../../resources/static/css/index.css">
     <link rel="stylesheet" href="../../../../resources/static/css/bottom.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script defer src="/static/js/total.js"></script>
+    <script defer src="../js/total.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop</title>
 </head>

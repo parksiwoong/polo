@@ -1,53 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ page import="popor.com.vos.users.UserVo" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>site</title>
-<script>
-    function addToCart($addToCartBtn){
-        let index = $addToCartBtn.getAttribute("data-index");
-        let countFormName = $addToCartBtn.getAttribute("data-count-form-name");
-        let count = document.body.querySelector('input[name="' + countFormName + '"]').value;
-        let url = '/basket/add?itemIndex=' + index + '&count=' + count;
-        let xhr = new XMLHttpRequest();
+<%@ include file="/WEB-INF/jsp/main/top.jsp" %>
+<div class="wrap" style="padding-top: 9%;    background: #f5f5f5;" >
+    <script>
+        function addToCart($addToCartBtn){
+            let index = $addToCartBtn.getAttribute("data-index");
+            let countFormName = $addToCartBtn.getAttribute("data-count-form-name");
+            let count = document.body.querySelector('input[name="' + countFormName + '"]').value;
+            let url = '/basket/add?itemIndex=' + index + '&count=' + count;
+            let xhr = new XMLHttpRequest();
 
-        xhr.open('POST', url);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    callback(xhr.responseText);
-                } else {
-                    fallback();
+            xhr.open('POST', url);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        callback(xhr.responseText);
+                    } else {
+                        fallback();
+                    }
                 }
-            }
-        };
-        xhr.send();
-    }
-
-    function callback(response) {
-        let result = JSON.parse(response);
-        if (result['result'] === 'not_allowed') {
-            alert('권한 없음');
-        } else {
-            alert("등록성공하였습니다.");
+            };
+            xhr.send();
         }
-    }
 
-    function fallback() {
-        alert('장바구니에 담기 실패');
-    }
-</script>
-</head>
-<body>
-<div class="wrap">
-    <div>
-        <a href="/add">상품 등록</a>
-    </div>
-    <p>전체 상품 수: <fmt:formatNumber value="${totalCount}" pattern="#,###" /></p>
-    <table class="table table-hover">
+        function callback(response) {
+            let result = JSON.parse(response);
+            if (result['result'] === 'not_allowed') {
+                alert('로그인을 해주세요');
+            } else {
+                alert("장바구니에 담겼습니다.");
+            }
+        }
+
+        function fallback() {
+            alert('장바구니에 담기 실패');
+        }
+    </script>
+
+
+    <p style="padding-top: 10%">전체 상품 수: <fmt:formatNumber value="${totalCount}" pattern="#,###" /></p>
+    <table class="shop" >
         <thead>
         <tr>
             <th>사진</th>
@@ -59,7 +53,7 @@
             <th>&nbsp;</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center; ">
         <c:choose>
             <c:when test="${empty itemVoList}">
                 <tr>
@@ -113,6 +107,12 @@
             <a href="?page=${pageBlockNext}">&gt;</a>
         </c:if>
     </div>
+    <div class="shop-add">
+        <a href="/add"  class="shop-add-pick">상품 등록</a>
+        <a href="/basket/list" class="shop-baskat"><img src="/img/cart.png" style="width:67px;"></a>
+    </div>
+
 </div>
-</body>
-</html>
+
+
+    <%@ include file="/WEB-INF/jsp/main/bottom.jsp" %>

@@ -1,0 +1,10 @@
+.wrap{width: 100%; position: relative;
+    padding-top: 8%;
+}
+.wrap .shop{ flex-direction: column; position: relative;
+    justify-content: center;width:1200px;height:100px; padding-bottom: 6%; left: 50%;
+    transform: translate(-49%, 0);}
+.wrap .add{position: center; align-self: center;}
+.shop-add{padding-bottom: 10%;    padding-top: 3%;}
+.shop-add .shop-add-pick {position: absolute; left: 50%;  transform: translate(-50%, 0);}
+.shop-add .shop-baskat {position: absolute; left: 68%;}

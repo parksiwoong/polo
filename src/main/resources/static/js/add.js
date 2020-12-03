@@ -58,9 +58,11 @@ addForm.onsubmit = function () {
         function callback(response) {
             let result = JSON.parse(response);
             if (result['result'] === 'not_allowed') {
-                alert('권한 없음');
+                alert('운영진만 가능합니다.');
+                window.history.back();
             } else {
                 alert("등록성공하였습니다.");
+                window.history.back();
             }
         }
         function fallback() {

@@ -3,7 +3,9 @@ package popor.com.daos.productDaos;
 
 import org.springframework.stereotype.Repository;
 import popor.com.vos.basket.AddVo;
+import popor.com.vos.basket.BasketListVo;
 import popor.com.vos.basket.BasketVo;
+import popor.com.vos.item.ItemVo;
 import popor.com.vos.users.UserVo;
 
 import java.sql.Connection;
@@ -11,9 +13,48 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class BasketDao {
+
+    public List<BasketListVo> list(Connection connection, int userIndex) {
+        String query = "SELECT * "+
+                "FROM `tldnd8989`.baskets b "+
+                "INNER JOIN `tldnd8989`.popor_items i "+
+                "ON b.item_index = i.item_index "+
+                "WHERE b.user_index = " + userIndex;
+        List<BasketListVo> list = new ArrayList<>();
+
+        try(PreparedStatement statement = connection.prepareStatement(query)){
+            statement.execute();
+
+            try(ResultSet rs = statement.getResultSet()){
+                while(rs.next()) {
+                    BasketListVo basketListVo = new BasketListVo();
+                    basketListVo.setIndex(rs.getInt("basket_index"));
+                    basketListVo.setDatetime(rs.getDate("basket_datetime"));
+                    basketListVo.setCount(rs.getInt("basket_count"));
+
+                    ItemVo itemVo = new ItemVo();
+                    itemVo.setIndex(rs.getInt("item_index"));
+                    itemVo.setName(rs.getString("item_name"));
+                    itemVo.setPrice(rs.getInt("item_price"));
+                    itemVo.setColor(rs.getString("item_color"));
+                    itemVo.setSize(rs.getString("item_size"));
+                    itemVo.setFileName(rs.getString("item_fileName"));
+                    basketListVo.setItemVo(itemVo);
+
+                    list.add(basketListVo);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return list;
+    }
+
     public void insertBasket(Connection connection, UserVo userVo, AddVo addVo) throws
             SQLException {
         String query = "" +
@@ -103,4 +144,18 @@ public class BasketDao {
         }
         return count;
     }
+
+    public void delete(Connection connection, Integer basketIndex) {
+        String query = "" +
+                "DELETE " +
+                "FROM `tldnd8989`.`baskets`\n" +
+                "WHERE `basket_index` = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, basketIndex);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
 }
