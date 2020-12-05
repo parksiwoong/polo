@@ -14,7 +14,7 @@ public class ItemDao {
 
     public long totalCount(Connection connection) {
         String query = "SELECT count(*) " +
-                "FROM `tldnd8989`.`popor_items`";
+                "FROM `popor_items`";
 
         try(PreparedStatement statement = connection.prepareStatement(query)){
             statement.execute();
@@ -31,7 +31,7 @@ public class ItemDao {
 
     public List<ItemVo> list(Connection connection, int offset, int limit) {
         String query = "SELECT * " +
-                "FROM `tldnd8989`.`popor_items` " +
+                "FROM `popor_items` " +
                 "ORDER BY item_index DESC " +
                 "LIMIT " + offset + ", " + limit;
         List<ItemVo> list = new ArrayList<>();
@@ -62,7 +62,7 @@ public class ItemDao {
     public long insertItem(Connection connection, AddVo addVo, String fileName) throws
             SQLException {
         String query = "" +
-                "INSERT INTO `tldnd8989`.`popor_items` (`item_name`, `item_price`,`item_color`,`item_size`,`item_fileName`)\n" +
+                "INSERT INTO `popor_items` (`item_name`, `item_price`,`item_color`,`item_size`,`item_fileName`)\n" +
                 "VALUES (?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, addVo.getName());
@@ -86,7 +86,7 @@ public class ItemDao {
     //---------------------------------------
 //    public void insertImage(Connection connection, String imageData) throws SQLException {
 //        try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-//                "insert into `tldnd8989`.`popor_images`(`image_data`)\n" +
+//                "insert into `popor_images`(`image_data`)\n" +
 //                "values (?)")) {
 //            preparedStatement.setString(1, imageData);
 //            preparedStatement.execute();

@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판</title>
-    <script defer src="resources/scripts/board.js"></script>
+    <script defer src="js/board.js"></script>
     <link rel="stylesheet" href="/css/board.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/bottom.css">
@@ -178,6 +178,3 @@
 </form>
 <div class="mid" style="height: 23vh;"><a href="write?id=<%= id %>&page=<%= pageNum %>">글 작성</a></div>
 <%@ include file = "../main/bottom.jsp" %>
-
-</body>
-</html>

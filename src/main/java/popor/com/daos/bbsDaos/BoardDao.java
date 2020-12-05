@@ -22,7 +22,7 @@ public class BoardDao {
             SQLException {
         int count;
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "SELECT COUNT(`board_index`) AS `count` FROM `tldnd8989`.`popor_boards` WHERE `board_id` = ?")) {
+                "SELECT COUNT(`board_index`) AS `count` FROM `popor_boards` WHERE `board_id` = ?")) {
             preparedStatement.setString(1, boardVo.getId());
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
@@ -38,7 +38,7 @@ public class BoardDao {
         BoardLevelVo boardLevelVo = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
                 "SELECT `board_read_level` AS `boardReadLevel`, `board_write_level` AS `boardWriteLevel` " +
-                "FROM `tldnd8989`.`popor_boards` " +
+                "FROM `popor_boards` " +
                 "WHERE `board_id` = ?")) {
             preparedStatement.setString(1, boardIdImpl.getId());
             preparedStatement.executeQuery();
@@ -64,8 +64,8 @@ public class BoardDao {
                 "       `article`.`article_content`    AS `articleContent`, " +
                 "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                 "       `article`.`article_hit`        AS `articleHit` " +
-                "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                "FROM `popor_articles` AS `article` " +
+                "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                 "WHERE `board_id` = ? " +     //nqa 넘겨받은 아이디
                 "ORDER BY `article_index` DESC " +
                 "LIMIT ?, 10")) {
@@ -106,8 +106,8 @@ public class BoardDao {
                     "       `article`.`article_content`    AS `articleContent`, " +
                     "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                     "       `article`.`article_hit`        AS `articleHit` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                    "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                    "FROM `popor_articles` AS `article` " +
+                    "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                     "WHERE `board_id` = ? " +
                     "  AND REPLACE(`article_title`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%' " +
                     "ORDER BY `article_index` DESC " +
@@ -121,8 +121,8 @@ public class BoardDao {
                     "       `article`.`article_content`    AS `articleContent`, " +
                     "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                     "       `article`.`article_hit`        AS `articleHit` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                    "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                    "FROM `popor_articles` AS `article` " +
+                    "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                     "WHERE `board_id` = ? " +
                     "  AND (REPLACE(`article_title`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%' OR " +
                     "       REPLACE(`article_content`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%') " +
@@ -137,8 +137,8 @@ public class BoardDao {
                     "       `article`.`article_content`    AS `articleContent`, " +
                     "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                     "       `article`.`article_hit`        AS `articleHit` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                    "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                    "FROM `popor_articles` AS `article` " +
+                    "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                     "WHERE `board_id` = ? " +
                     "  AND `user`.`user_nickname` = '" + searchVo.getKeyword() + "' " +
                     "ORDER BY `article_index` DESC " +
@@ -178,14 +178,14 @@ public class BoardDao {
             // 제목 기준 검색
             query = "" +
                     "SELECT COUNT(`article_index`) AS `count` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
+                    "FROM `popor_articles` AS `article` " +
                     "WHERE `board_id` = ? " +
                     "  AND REPLACE(`article_title`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%' ";
         } else if (searchVo.getWhat().equals("title_content")) {
             // 제목 + 내용 기준 검색
             query = "" +
                     "SELECT COUNT(`article_index`) AS `count` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
+                    "FROM `popor_articles` AS `article` " +
                     "WHERE `board_id` = ? " +
                     "  AND (REPLACE(`article_title`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%' OR " +
                     "       REPLACE(`article_content`, ' ', '') LIKE '%" + searchVo.getKeyword() + "%') ";
@@ -193,8 +193,8 @@ public class BoardDao {
             // 작성자(닉네임) 기준 검색
             query = "" +
                     "SELECT COUNT(`article_index`) AS `count` " +
-                    "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                    "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                    "FROM `popor_articles` AS `article` " +
+                    "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                     "WHERE `board_id` = ? " +
                     "  AND `user`.`user_nickname` = '" + searchVo.getKeyword() + "' ";
         }
@@ -212,7 +212,7 @@ public class BoardDao {
     public int selectTotalArticleCount(Connection connection, BoardVo boardVo) throws
             SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `tldnd8989`.`popor_articles` WHERE `board_id` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `popor_articles` WHERE `board_id` = ?")) {
             preparedStatement.setString(1, boardVo.getId());
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
@@ -226,7 +226,7 @@ public class BoardDao {
     public void insertArticle(Connection connection, UserVo userVo, BoardWriteVo boardWriteVo) throws
             SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "INSERT INTO `tldnd8989`.`popor_articles` (`user_email`, " +
+                "INSERT INTO `popor_articles` (`user_email`, " +
                                                             "`board_id`, " +
                                                             "`article_title`, " +
                                                             "`article_content`) " +
@@ -249,8 +249,8 @@ public class BoardDao {
                 "       `article`.`article_content`    AS `articleContent`, " +
                 "       `article`.`article_written_at` AS `articleWrittenAt`, " +
                 "       `article`.`article_hit`        AS `articleHit` " +
-                "FROM `tldnd8989`.`popor_articles` AS `article` " +
-                "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
+                "FROM `popor_articles` AS `article` " +
+                "         INNER JOIN `popor_users` AS `user` ON `article`.`user_email` = `user`.`user_email` " +
                 "WHERE `article_index` = ? ")) {
             preparedStatement.setInt(1, articleIndex);
             preparedStatement.executeQuery();
@@ -274,7 +274,7 @@ public class BoardDao {
 
     public void insertComment(Connection connection, UserVo userVo, CommentVo commentVo) throws
             SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `tldnd8989`.`popor_comments` (article_index, user_email, comment_text) VALUES(?, ?, ?)")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `popor_comments` (article_index, user_email, comment_text) VALUES(?, ?, ?)")) {
             preparedStatement.setInt(1, commentVo.getArticleId());
             preparedStatement.setString(2, userVo.getEmail());
             preparedStatement.setString(3, commentVo.getText());
@@ -289,8 +289,8 @@ public class BoardDao {
                 "SELECT `user`.`user_nickname`         AS `userNickname`,\n" +
                 "       `comment`.`comment_text`       AS `commentText`,\n" +
                 "       `comment`.`comment_written_at` AS `commentWrittenAt`\n" +
-                "FROM `tldnd8989`.`popor_comments` AS `comment`\n" +
-                "         INNER JOIN `tldnd8989`.`popor_users` AS `user` ON `comment`.`user_email` = `user`.`user_email`\n" +
+                "FROM `popor_comments` AS `comment`\n" +
+                "         INNER JOIN `popor_users` AS `user` ON `comment`.`user_email` = `user`.`user_email`\n" +
                 "WHERE `comment`.`article_index` = ?\n" +
                 "ORDER BY `comment`.`comment_index`")) {
             preparedStatement.setInt(1, articleIndex);
@@ -315,7 +315,7 @@ public class BoardDao {
         int count;
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
                 "SELECT COUNT(`article_index`) AS `count`\n" +
-                "FROM `tldnd8989`.`popor_comments`\n" +
+                "FROM `popor_comments`\n" +
                 "WHERE `article_index` = ?")) {
             preparedStatement.setInt(1, articleIndex);
             preparedStatement.executeQuery();
@@ -329,7 +329,7 @@ public class BoardDao {
 
     public void deleteArticle(Connection connection, int articleId) throws
             SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `tldnd8989`.`popor_articles` WHERE `article_index` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM `popor_articles` WHERE `article_index` = ?")) {
             preparedStatement.setInt(1, articleId);
             preparedStatement.execute();
         }
@@ -339,7 +339,7 @@ public class BoardDao {
 
     public void insertImage(Connection connection, String imageData) throws SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "insert into `tldnd8989`.`popor_images`(`image_data`)\n" +
+                "insert into `popor_images`(`image_data`)\n" +
                 "values (?)")) {
             preparedStatement.setString(1, imageData);
             preparedStatement.execute();
@@ -362,7 +362,7 @@ public class BoardDao {
     public String selectImage(Connection connection, int id) throws SQLException {
         String imageData = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "select `image_data` as `imageData` from `tldnd8989`.`popor_images` where `image_index` = ?")) {
+                "select `image_data` as `imageData` from `popor_images` where `image_index` = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {

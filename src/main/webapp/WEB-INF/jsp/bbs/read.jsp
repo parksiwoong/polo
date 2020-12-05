@@ -22,6 +22,7 @@
     <script defer src="js/read.js"></script>
     <link rel="stylesheet" href="/css/read.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/bottom.css">
 
 
 </head>
@@ -88,9 +89,6 @@
     }
 %></div>
 <%@ include file = "../main/bottom.jsp" %>
-
-</body>
-</html>
 
 
 

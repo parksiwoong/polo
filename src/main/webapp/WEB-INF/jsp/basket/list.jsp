@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="/WEB-INF/jsp/main/top.jsp" %>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <div class="wrap" style="padding-top: 14%;     background: #f5f5f5;" >
     <script>
         function basketDelete($deleteBtn){

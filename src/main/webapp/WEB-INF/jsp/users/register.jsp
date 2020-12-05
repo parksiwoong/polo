@@ -1,8 +1,5 @@
 <%@ page import="popor.com.enums.UserRegisterResult" %>
 <%@ page import="popor.com.vos.users.UserRegisterVo" %>
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%
     Object userRegisterResultObject = session.getAttribute("UserRegisterResult");
     UserRegisterResult userRegisterResult = null;
@@ -19,55 +16,6 @@
     session.setAttribute("UserRegisterVo", null);
 
 %>
-
-<!DOCTYPE html>
-<html lang="UTF-8">
-<head>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/bottom.css">
-       <link rel="stylesheet" href="css/register.css">
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-    <script defer src="js/register.js"></script>
-
-</head>
-<body>
-
-
-<%--<div style="height: auto; min-height: 100%; padding-bottom:50%;">--%>
-
-<%--    <ul class="register">--%>
-<%--        <h2>회원가입</h2>--%>
-<%--        <form id="register-form" method="post">--%>
-<%--            <li class="register_1"><input name="email" type="email"  maxlength="100" autofocus--%>
-<%--                                          value="  "></li>--%>
-<%--            <li class="register_1"><input name="password" type="password" placeholder="비밀번호" maxlength="100"--%>
-<%--                                          value="">--%>
-<%--            </li>--%>
-<%--            <li class="register_1"><input name="password-check" type="password" placeholder="비밀번호 재입력" maxlength="100"--%>
-<%--                                          value="">--%>
-<%--            </li>--%>
-<%--            <li class="register_1"><input name="name" type="text" placeholder="이름" maxlength="10"--%>
-<%--                                          value=""></li>--%>
-<%--            <li class="register_1"><input name="nickname" type="text" placeholder="닉네임" maxlength="10"--%>
-<%--                                          value="">--%>
-<%--            </li>--%>
-<%--            <li class="register_1"><input name="contact" type="tel" placeholder="연락처" maxlength="11"--%>
-<%--                                          value=""></li>--%>
-
-
-<%--            <li class="button"><input type="submit" value="회원가입"></li>--%>
-<%--            <li class="button"><input type="reset" value="다시입력"></li>--%>
-
-<%--        </form>--%>
-<%--    </ul>--%>
-<%--    <div>--%>
-<%--        <ul>--%>
-<%--            <a href="/login" target="_self">로그인 페이지로 돌아가기</a>--%>
-<%--        </ul>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
 <%@ include file = "../main/top.jsp" %>
 
 <style type="text/css">
@@ -136,16 +84,6 @@
 
         </div>
     </div>
-
-<%--    <div class="btn-gr">--%>
-<%--        <label>--%>
-<%--           <injput type="radio" name="registerGender" autoconplete=""off value="<%= userRegisterVo != null ? userRegisterVo.getName("남자") : "" %>" checked></injput>--%>
-<%--        </label>--%>
-<%--        <label>--%>
-<%--            <injput type="radio" name="registerGender" autoconplete=""off value="<%= userRegisterVo != null ? userRegisterVo.getName("남자") : "" %>" checked></injput>--%>
-<%--        </label>--%>
-
-<%--    </div>--%>
 
 
     <div class="fieldwrapper">
@@ -219,7 +157,3 @@
     }
 %>
 <%@ include file = "../main/bottom.jsp" %>
-</body>
-
-
-</html>

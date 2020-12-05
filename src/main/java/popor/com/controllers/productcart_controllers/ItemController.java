@@ -110,7 +110,7 @@ public class ItemController {
             HttpServletResponse response,
             @RequestParam int index
     ) throws IOException {
-        File file = new File(PoporApplication.dataPath + "\\" + index + ".bin");
+        File file = new File(PoporApplication.dataPath + "/" + index + ".bin");
 
         try (FileInputStream inputStream = new FileInputStream(file)) {
             try (ServletOutputStream outputStream = response.getOutputStream()) {

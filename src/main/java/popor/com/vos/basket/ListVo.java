@@ -40,7 +40,7 @@ public class ListVo implements IBoardIdImpl {
     public int selectTotalArticleCount(Connection connection, ListVo listVo) throws
             SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `tldnd8989`.`popor_items` WHERE `board_id` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `popor_items` WHERE `board_id` = ?")) {
             preparedStatement.setString(1, listVo.getId());
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {

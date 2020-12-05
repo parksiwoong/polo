@@ -39,7 +39,7 @@ public  class BoardVo implements IBoardIdImpl {
     public int selectTotalArticleCount(Connection connection, BoardVo boardVo) throws
             SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `tldnd8989`.`popor_articles` WHERE `board_id` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`article_index`) AS `count` FROM `popor_articles` WHERE `board_id` = ?")) {
             preparedStatement.setString(1, boardVo.getId());
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {

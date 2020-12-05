@@ -66,6 +66,8 @@ addForm.onsubmit = function () {
             }
         }
         function fallback() {
+            alert("등록성공하였습니다.");
+            window.history.back();
         }
         xhr("POST", "/add", callback, fallback, formData);
         return false;

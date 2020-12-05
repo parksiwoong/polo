@@ -10,5 +10,6 @@ loginForm.onsubmit = function (){
         alert("비밀번호를 입력해주세요");
         passwordInput.focus();
         return false;
-    }return true;
+    }
+    return true;
 }

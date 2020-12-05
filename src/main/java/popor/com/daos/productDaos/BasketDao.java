@@ -20,8 +20,8 @@ public class BasketDao {
 
     public List<BasketListVo> list(Connection connection, int userIndex) {
         String query = "SELECT * "+
-                "FROM `tldnd8989`.baskets b "+
-                "INNER JOIN `tldnd8989`.popor_items i "+
+                "FROM baskets b "+
+                "INNER JOIN popor_items i "+
                 "ON b.item_index = i.item_index "+
                 "WHERE b.user_index = " + userIndex;
         List<BasketListVo> list = new ArrayList<>();
@@ -58,7 +58,7 @@ public class BasketDao {
     public void insertBasket(Connection connection, UserVo userVo, AddVo addVo) throws
             SQLException {
         String query = "" +
-                "INSERT INTO `tldnd8989`.`baskets` (`user_index`,\n" +
+                "INSERT INTO `baskets` (`user_index`,\n" +
                 "                                   `item_index`,\n" +
                 "                                   `basket_count`)\n" +
                 "VALUES (?, ?, ?)";
@@ -73,7 +73,7 @@ public class BasketDao {
     public void updateBasket(Connection connection, UserVo userVo, AddVo addVo) throws
             SQLException {
         String query = "" +
-                "UPDATE `tldnd8989`.`baskets`\n" +
+                "UPDATE `baskets`\n" +
                 "SET `basket_count`    = `basket_count` + ?,\n" +
                 "    `basket_datetime` = CURRENT_TIMESTAMP()\n" +
                 "WHERE `user_index` = ?\n" +
@@ -98,10 +98,10 @@ public class BasketDao {
                 "       `size`.`size_price_variation`   AS `sizeVariation`,\n" +
                 "       `basket`.`basket_datetime`      AS `basketDateTime`,\n" +
                 "       `basket`.`basket_count`         AS `basketCount`\n" +
-                "FROM `tldnd8989`.`baskets` AS `basket`\n" +
-                "         INNER JOIN `tldnd8989`.`items` AS `item` ON `item`.`item_index` = `basket`.`item_index`\n" +
-                "         INNER JOIN `tldnd8989`.`item_colors` AS `color` ON `color`.`item_index` = `basket`.`item_index`\n" +
-                "         INNER JOIN `tldnd8989`.`item_sizes` AS `size` ON `size`.`item_index` = `basket`.`item_index`\n" +
+                "FROM `baskets` AS `basket`\n" +
+                "         INNER JOIN `items` AS `item` ON `item`.`item_index` = `basket`.`item_index`\n" +
+                "         INNER JOIN `item_colors` AS `color` ON `color`.`item_index` = `basket`.`item_index`\n" +
+                "         INNER JOIN `item_sizes` AS `size` ON `size`.`item_index` = `basket`.`item_index`\n" +
                 "WHERE `user_index` = ?\n" +
                 "GROUP BY `basket`.`basket_index`";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -130,7 +130,7 @@ public class BasketDao {
         int count;
         String query = "" +
                 "SELECT COUNT(`basket_index`) AS `count`\n" +
-                "FROM `tldnd8989`.`baskets`\n" +
+                "FROM `baskets`\n" +
                 "WHERE `user_index` = ?\n" +
                 "  AND `item_index` = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -148,7 +148,7 @@ public class BasketDao {
     public void delete(Connection connection, Integer basketIndex) {
         String query = "" +
                 "DELETE " +
-                "FROM `tldnd8989`.`baskets`\n" +
+                "FROM `baskets`\n" +
                 "WHERE `basket_index` = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, basketIndex);

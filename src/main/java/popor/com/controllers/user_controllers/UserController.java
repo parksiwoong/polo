@@ -12,6 +12,7 @@ import popor.com.enums.UserRegisterResult;
 import popor.com.services.userServices.UserService;
 import popor.com.vos.users.UserLoginVo;
 import popor.com.vos.users.UserRegisterVo;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -46,7 +47,14 @@ public class UserController {
         request.getSession().setAttribute("UserLoginResult", userLoginResult); //리스트[0,1,2]씩으로 만든 성공 실패여부 // request가지고오는,getSession() 세션을 불러와서 setAttribute 저장하는거
         request.getSession().setAttribute("UserLoginVo", userLoginVo);
 
-        response.sendRedirect("polo"); //겟
+        if (userLoginResult != null) {
+            if (userLoginResult != UserLoginResult.SUCCESS) {
+                response.sendRedirect("/login");
+            } else {
+                response.sendRedirect("/polo");
+
+            }
+        }
     }
 
 
@@ -72,14 +80,14 @@ public class UserController {
     )
 
             throws SQLException, IOException {
-        UserRegisterVo userRegisterVo = new UserRegisterVo(email,password,name,nickname,contact);
-        if(userRegisterVo.getEmail()==null){
+        UserRegisterVo userRegisterVo = new UserRegisterVo(email, password, name, nickname, contact);
+        if (userRegisterVo.getEmail() == null) {
             response.sendRedirect("/register?result=falues");
-        }else {
+        } else {
             UserRegisterResult userRegisterResult = this.userService.register(userRegisterVo);
             request.getSession().setAttribute("UserRegisterResult", userRegisterResult);
             request.getSession().setAttribute("UserRegisterVo", userRegisterVo);
-            response.sendRedirect("/register?result="+userRegisterResult.name().toLowerCase());
+            response.sendRedirect("/register?result=" + userRegisterResult.name().toLowerCase());
         }
 
     }

@@ -86,7 +86,7 @@ public class ItemService {
 
         if(file != null){
             try(InputStream inputStream = file.getInputStream()){
-                File file2 = new File(PoporApplication.dataPath + "\\" + index + ".bin");
+                File file2 = new File(PoporApplication.dataPath + "/" + index + ".bin");
 
                 try(FileOutputStream outputStream = new FileOutputStream(file2)) {
                     IoUtil.copy(inputStream, outputStream);

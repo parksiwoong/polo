@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
-<!DOCTYPE html>
 
-<html lang="ko">
 
 <head>
 
     <meta http-equiv="Content-Type" content="text/xhtml+xml;charset=utf-8"/>
 
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <script>
 
@@ -122,7 +120,7 @@
 
 </head>
 
-<body>
+
 
 <form name="notice_form">
 
@@ -141,7 +139,3 @@
     </div>
 
 </form>
-
-</body>
-
-</html>

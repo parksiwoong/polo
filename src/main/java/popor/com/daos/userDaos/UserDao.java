@@ -26,7 +26,7 @@ public class UserDao {
                 "       `user_nickname` AS `userNickname`, " +
                 "       `user_contact`  AS `userContact`, " +
                 "       `user_level`    AS `userLevel` " +
-                "FROM `tldnd8989`.`popor_users` " +
+                "FROM `popor_users` " +
                 "WHERE `user_email` = ? " +
                 "  AND `user_password` = ? " +
                 "LIMIT 1")) {
@@ -60,7 +60,7 @@ public class UserDao {
                 "       `user_nickname` AS `userNickname`, " +
                 "       `user_contact`  AS `userContact`, " +
                 "       `user_level`    AS `userLevel` " +
-                "FROM`tldnd8989`.`popor_users` " +
+                "FROM`popor_users` " +
                 "WHERE `user_email` = ? " +
                 "  AND `user_contact` = ? " +
                 "LIMIT 1")) {
@@ -87,7 +87,7 @@ public class UserDao {
             throws SQLException {
         String email = null;
         String query = "SELECT `user_email` AS `userEmail`\n" +
-                "FROM `tldnd8989`.`popor_users`\n" +
+                "FROM `popor_users`\n" +
                 "WHERE `user_name` = ? AND `user_contact` = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, findEmailVo.getName());
@@ -104,7 +104,7 @@ public class UserDao {
     public int selectEmailCount(Connection connection, String email)
             throws SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `tldnd8989`.`popor_users` WHERE `user_email` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `popor_users` WHERE `user_email` = ?")) {
             preparedStatement.setString(1, email);
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
@@ -118,7 +118,7 @@ public class UserDao {
     public int selectNicknameCount(Connection connection, String nickname)
             throws SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `tldnd8989`.`popor_users` WHERE `user_nickname` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `popor_users` WHERE `user_nickname` = ?")) {
             preparedStatement.setString(1, nickname);
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
@@ -132,7 +132,7 @@ public class UserDao {
     public int selectContactCount(Connection connection, String contact)
             throws SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `tldnd8989`.`popor_users` WHERE `user_contact` = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`user_index`) AS `count` FROM `popor_users` WHERE `user_contact` = ?")) {
             preparedStatement.setString(1, contact);
             preparedStatement.executeQuery();
             try (ResultSet resultSet = preparedStatement.getResultSet()) {
@@ -146,7 +146,7 @@ public class UserDao {
     public void insertUser(Connection connection, UserRegisterVo userRegisterVo)
             throws SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "INSERT INTO `tldnd8989`.`popor_users` (user_email, user_password, user_name, user_nickname, user_contact) " +
+                "INSERT INTO `popor_users` (user_email, user_password, user_name, user_nickname, user_contact) " +
                 "VALUES (?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, userRegisterVo.getEmail());
             preparedStatement.setString(2, userRegisterVo.getHashedPassword());
@@ -160,7 +160,7 @@ public class UserDao {
 
     public void insertResetCode(Connection connection, int userIndex, String code)
             throws SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `tldnd8989`.`user_reset_codes` (user_index, code, code_expires_at) VALUES(?, ?, DATE_ADD(NOW(), INTERVAL 3 MINUTE))")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `user_reset_codes` (user_index, code, code_expires_at) VALUES(?, ?, DATE_ADD(NOW(), INTERVAL 3 MINUTE))")) {
             preparedStatement.setInt(1, userIndex);
             preparedStatement.setString(2, code);
             preparedStatement.execute();
@@ -170,7 +170,7 @@ public class UserDao {
     public int selectResetCodeCount(Connection connection, int userIndex, String code)
             throws SQLException {
         int count;
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`code_index`) AS `count` FROM `tldnd8989`.`user_reset_codes` WHERE `user_index` = ? AND `code` = ? AND `code_expires_at` > NOW()")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(`code_index`) AS `count` FROM `user_reset_codes` WHERE `user_index` = ? AND `code` = ? AND `code_expires_at` > NOW()")) {
             preparedStatement.setInt(1, userIndex);
             preparedStatement.setString(2, code);
             preparedStatement.executeQuery();

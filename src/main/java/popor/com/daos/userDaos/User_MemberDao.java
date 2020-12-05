@@ -25,7 +25,7 @@ public class User_MemberDao {
                       "       `user_nickname` as `userNickname`,\n " +
                       "       `user_contact`  as `userContact`,\n " +
                       "       `user_level`    AS `userLevel` " +
-                "from `tldnd8989`.`popor_users`" +
+                "from `popor_users`" +
                 "where `user_name` =?" +
                 "and `user_contact`=?" +
                 "limit 1")) {
@@ -59,7 +59,7 @@ public class User_MemberDao {
                         "       `user_nickname` as `userNickname`,\n " +
                         "       `user_contact`  as `userContact`,\n " +
                         "       `user_level`    AS `userLevel` " +
-                        "from `tldnd8989`.`popor_users`\n" +
+                        "from `popor_users`\n" +
                         "where `user_email` = ?\n" +
                         "  and `user_name` = ?\n" +
                         "LIMIT 1")) {
@@ -85,7 +85,7 @@ public class User_MemberDao {
     public void insertPasswordkey(Connection connection, FindPasswordVo findPasswordVo, String key)
             throws SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "INSERT INTO `tldnd8989`.`popor_password_keys` (`user_email`, \n" +
+                "INSERT INTO `popor_password_keys` (`user_email`, \n" +
                 "                                               `key_value`, \n" +
                 "                                               `key_valid_until`)\n" +
                 "VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 10 MINUTE))")) {
@@ -98,7 +98,7 @@ public class User_MemberDao {
     public String selectPasswordEmail(Connection connection, ResetPasswordVo resetPasswordVo) throws SQLException {
         String email = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "select `user_email` AS `userEmail` from `tldnd8989`.`popor_password_keys` where `key_value` =? and `key_valid_until` > now()")) {
+                "select `user_email` AS `userEmail` from `popor_password_keys` where `key_value` =? and `key_valid_until` > now()")) {
             preparedStatement.setString(1, resetPasswordVo.getKey());
             preparedStatement.execute();
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -112,7 +112,7 @@ public class User_MemberDao {
 
     public void updatePassword(Connection connection, ResetPasswordVo resetPasswordVo, String email) throws SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement("" +
-                "UPDATE `tldnd8989`.`popor_users` SET `user_password` = ? WHERE `user_email` = ?")) {
+                "UPDATE `popor_users` SET `user_password` = ? WHERE `user_email` = ?")) {
             preparedStatement.setString(1, resetPasswordVo.getHashedPassword());
             preparedStatement.setString(2, email);
             preparedStatement.execute();
